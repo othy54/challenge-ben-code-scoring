@@ -24,7 +24,7 @@
                 </g>
             </g>
         </svg>
-        <h2 class="col-span-2">Moyenne : {{ props.score }} / 5</h2>
+        <h2 class="col-span-2">Moyenne : <span :key="props.score" class="score">{{ props.score }}</span> / 5</h2>
     </div>
 </template>
 <script setup>
@@ -71,5 +71,23 @@ const percent = computed(() => {
 
 .cls-3 {
     mix-blend-mode: lighten;
+}
+
+.score {
+    animation: change 0.5s forwards;
+    display: inline-block;
+}
+
+
+@keyframes change {
+    from {
+        transform: translateY(-8px);
+        opacity: 0.5
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1
+    }
 }
 </style>
